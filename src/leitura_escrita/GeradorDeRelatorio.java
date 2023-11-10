@@ -59,7 +59,7 @@ public class GeradorDeRelatorio {
         relatorioDez(eleicao);     
     }
 
-    public static ArrayList<Candidato> relatorioDois(Eleicao eleicao){
+    private static ArrayList<Candidato> relatorioDois(Eleicao eleicao){
 
         ArrayList<Candidato> candidatosEleitosOrdenados = eleicao.ordenaCandidatosEleitosPorVoto();
 
@@ -80,7 +80,7 @@ public class GeradorDeRelatorio {
         return candidatosEleitosOrdenados;
     }
 
-    public static ArrayList<Candidato> relatorioTresEQuatro(Eleicao eleicao, TipoDeputado TipoDeputado){
+    private static ArrayList<Candidato> relatorioTresEQuatro(Eleicao eleicao, TipoDeputado TipoDeputado){
 
         System.out.println("\nCandidatos mais votados (em ordem decrescente de votação e respeitando número de vagas):");
 
@@ -117,7 +117,7 @@ public class GeradorDeRelatorio {
         return candidatosOrdenados;
     }
 
-    public static void relatorioCinco(Eleicao eleicao, ArrayList<Candidato> candidatosEleitosOrdenados, ArrayList<Candidato> candidatosOrdenados){
+    private static void relatorioCinco(Eleicao eleicao, ArrayList<Candidato> candidatosEleitosOrdenados, ArrayList<Candidato> candidatosOrdenados){
 
         ArrayList<Candidato> candidatosQueNaoSeriamEleitos = new ArrayList<>();
 
@@ -144,7 +144,7 @@ public class GeradorDeRelatorio {
         }
     }
 
-    public static void relatorioSeis(Eleicao eleicao, ArrayList<Candidato> candidatos){
+    private static void relatorioSeis(Eleicao eleicao, ArrayList<Candidato> candidatos){
 
         eleicao.calculaVotosNominais(candidatos);
 
@@ -159,7 +159,7 @@ public class GeradorDeRelatorio {
         }
     }
 
-    public static void relatorioOito(Eleicao eleicao, LocalDate dataEleicao){
+    private static void relatorioOito(Eleicao eleicao, LocalDate dataEleicao){
 
         System.out.println("\nEleitos, por faixa etária (na data da eleição):");
 
@@ -167,14 +167,14 @@ public class GeradorDeRelatorio {
         
     }
 
-    public static void relatorioNove(Eleicao eleicao){
+    private static void relatorioNove(Eleicao eleicao){
 
         System.out.println("\nEleitos, por gênero:");
 
         eleicao.calculaPorcentagemGenero();
     }
 
-    public static void relatorioDez(Eleicao eleicao){
+    private static void relatorioDez(Eleicao eleicao){
 
         eleicao.somaVotosTotais();
 

@@ -156,12 +156,12 @@ public class LeitorDeArquivo {
     }
 
     // Função que retira as aspas do ínicio e final de uma string;
-    public static String removeAspas(String texto) {
+    private static String removeAspas(String texto) {
         return texto.substring(1, texto.length() - 1);
     }
 
     // Função que transforma a string do arquivo referente a situação do candidato em inteiro;
-    public static int parseSituacaoCandidato(String situacaoCandidato){
+    private static int parseSituacaoCandidato(String situacaoCandidato){
         
         situacaoCandidato = LeitorDeArquivo.removeAspas(situacaoCandidato);
         
@@ -169,7 +169,7 @@ public class LeitorDeArquivo {
     }
 
     // Função que transforma a string do arquivo referente a destinaçaõ dos votos em boolean, onde true indica que o voto vai para a legenda;
-    public static boolean parseVotosVaoParaLegenda(String votosVaoParaLegenda){
+    private static boolean parseVotosVaoParaLegenda(String votosVaoParaLegenda){
         
         votosVaoParaLegenda = LeitorDeArquivo.removeAspas(votosVaoParaLegenda);
         
@@ -177,7 +177,7 @@ public class LeitorDeArquivo {
     }
 
     // Função que transforma a string do arquivo referente ao cargo em TipoDeputado;
-    public static TipoDeputado parseCargo(String cargo){
+    private static TipoDeputado parseCargo(String cargo){
 
         cargo = removeAspas(cargo);
         int cargoInt = Integer.parseInt(cargo);
@@ -191,7 +191,7 @@ public class LeitorDeArquivo {
     }
 
     // Função que transforma a string do arquivo referente ao número da federação em inteiro;
-    public static int parseNumFederacao(String numFederacao){
+    private static int parseNumFederacao(String numFederacao){
         
         numFederacao = LeitorDeArquivo.removeAspas(numFederacao);
         
@@ -199,7 +199,7 @@ public class LeitorDeArquivo {
     }
 
     // Função que transforma a string do arquivo referente a data de nascimento em LocalDate;
-    public static LocalDate parseDataDeNascimento(String dataNascimento){
+    private static LocalDate parseDataDeNascimento(String dataNascimento){
 
         dataNascimento = LeitorDeArquivo.removeAspas(dataNascimento);
 
@@ -209,7 +209,7 @@ public class LeitorDeArquivo {
     }
 
     // Função que transforma a string do arquivo referente a se o candidato foi eleito em boolean, onde o true é se ele foi eleito;
-    public static boolean parseCandidatoEleito(String candidatoEleito){
+    private static boolean parseCandidatoEleito(String candidatoEleito){
 
         candidatoEleito = LeitorDeArquivo.removeAspas(candidatoEleito);
         int candidatoEleitoInt = Integer.parseInt(candidatoEleito);
@@ -218,7 +218,7 @@ public class LeitorDeArquivo {
     }
 
     // Função que transforma a string do arquivo referente ao genero do candidato no tipo Genero;
-    public static Genero parseGenero(String genero){
+    private static Genero parseGenero(String genero){
         
         genero = LeitorDeArquivo.removeAspas(genero);
         int generoInt = Integer.parseInt(genero);
@@ -231,7 +231,7 @@ public class LeitorDeArquivo {
         return generoRetorno;
     }
     //Transforma os números de votos em inteiros;
-    public static int parseNumVotos(String numVotos){
+    private static int parseNumVotos(String numVotos){
 
         numVotos = LeitorDeArquivo.removeAspas(numVotos);
         
