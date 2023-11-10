@@ -1,9 +1,17 @@
+package leitura_escrita;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import entidades.Candidato;
+import entidades.Eleicao;
+import entidades.Federacao;
+import entidades.Genero;
+import entidades.Partido;
+import entidades.TipoDeputado;
 
 public class LeitorDeArquivo {
 

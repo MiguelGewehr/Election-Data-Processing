@@ -1,6 +1,11 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import entidades.Eleicao;
+import entidades.TipoDeputado;
+import leitura_escrita.GeradorDeRelatorio;
+import leitura_escrita.LeitorDeArquivo;
+
 public class App {
     public static void main(String[] args) {
 

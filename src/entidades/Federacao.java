@@ -1,3 +1,4 @@
+package entidades;
 public class Federacao {
     
     private int numFederacao;

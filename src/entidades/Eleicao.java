@@ -1,3 +1,4 @@
+package entidades;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -48,34 +49,7 @@ public class Eleicao {
         this.partidos.put(p.getNumPartido(), p);
     }
 
-    /*public void somaVotos(String key, int numVotos) {
-
-        if (this.candidatos.get(key) != null) {
-
-            Candidato aux = this.candidatos.get(key);
-            if (aux.getVotosVaoParaLegenda()) {
-                
-                String numPartido = aux.getPartido().getNumPartido();
-                Partido aux2 = this.partidos.get(numPartido);
-
-                aux2.somaVotos(numVotos);
-                this.partidos.put(numPartido, aux2);
-
-                aux.somaVotos(numVotos);
-                this.candidatos.put(key, aux);
-            } else {
-                aux.somaVotos(numVotos);
-                this.candidatos.put(key, aux);
-            }
-        } else if (this.partidos.get(key) != null) {
-            
-            Partido aux2 = this.partidos.get(key);
-            aux2.somaVotos(numVotos);
-            this.partidos.put(key, aux2);
-        } else {
-            // System.out.println("Chave não encontrada!");
-        }
-    }*/
+    
 
     public void printaCandidatos() {
         for (Map.Entry<String, Candidato> entry : this.candidatos.entrySet()) {
@@ -85,16 +59,7 @@ public class Eleicao {
         }
     }
 
-    public void printaCandidatosEleitos() {
-        System.out.println(this.candidatosEleitos.size());
-
-        for (Map.Entry<String, Candidato> entry : this.candidatosEleitos.entrySet()) {
-            System.out.println("oi");
-            String chave = entry.getKey();
-            Candidato candidato = entry.getValue();
-            System.out.println("Chave: " + chave + ", Valor: " + candidato);
-        }
-    }
+    
 
     public int getNumCandidatosEleitos(){
         return this.candidatosEleitos.size();
