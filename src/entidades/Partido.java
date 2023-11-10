@@ -1,3 +1,4 @@
+package entidades;
 import java.text.DecimalFormat;
 
 public class Partido {
@@ -37,7 +38,7 @@ public class Partido {
         return candidatoMenosVotado;
     }
     
-    void setCandidatoMenosVotado(Candidato candidatoMenosVotado) {
+    public void setCandidatoMenosVotado(Candidato candidatoMenosVotado) {
         this.candidatoMenosVotado = candidatoMenosVotado;
     }
     
