@@ -11,6 +11,7 @@ import entidades.TipoDeputado;
 
 public class GeradorDeRelatorio {
 
+    //Funcao maior que chama as funcoes especificas de cada relatorio;
     public static void geraRelatorio(Eleicao eleicao, TipoDeputado TipoDeputado, LocalDate dataEleicao) {
 
         System.out.println("Número de vagas: " + eleicao.getNumCandidatosEleitos() + "\n");
@@ -23,34 +24,7 @@ public class GeradorDeRelatorio {
 
         relatorioSeis(eleicao, candidatosOrdenados);
 
-        System.out.println("\nPrimeiro e último colocados de cada partido:");
-
-        HashMap<String, Partido> partidos1 = new HashMap<>();
-
-        for(int i = candidatosOrdenados.size()-1; i >=0; i--){
-            
-            Candidato c = candidatosOrdenados.get(i);
-
-            if(partidos1.get(c.getPartido().getNumPartido()) == null){
-                partidos1.put(c.getPartido().getNumPartido(), c.getPartido());
-                c.getPartido().setCandidatoMenosVotado(c);
-            }
-
-        }
-
-        HashMap<String, Partido> partidos = new HashMap<>();
-
-        int i=1;
-        for(Candidato c : candidatosOrdenados){
-
-            if(partidos.get(c.getPartido().getNumPartido()) == null){
-                partidos.put(c.getPartido().getNumPartido(), c.getPartido());
-                Partido p = partidos1.get(c.getPartido().getNumPartido());
-                c.printaCandidatoRelatorioSete(i, p.getCandidatoMenosVotado());
-                i++;
-            }
-            
-        }
+        relatorioSete(candidatosOrdenados);
 
         relatorioOito(eleicao, dataEleicao);
 
@@ -157,6 +131,38 @@ public class GeradorDeRelatorio {
             p.printaPartidoRelatorioSeis(i);
             i++;
         }
+    }
+
+    private static void relatorioSete(ArrayList<Candidato> candidatosOrdenados){
+        System.out.println("\nPrimeiro e último colocados de cada partido:");
+
+        HashMap<String, Partido> partidos1 = new HashMap<>();
+
+        for(int i = candidatosOrdenados.size()-1; i >=0; i--){
+            
+            Candidato c = candidatosOrdenados.get(i);
+
+            if(partidos1.get(c.getPartido().getNumPartido()) == null){
+                partidos1.put(c.getPartido().getNumPartido(), c.getPartido());
+                c.getPartido().setCandidatoMenosVotado(c);
+            }
+
+        }
+
+        HashMap<String, Partido> partidos = new HashMap<>();
+
+        int i=1;
+        for(Candidato c : candidatosOrdenados){
+
+            if(partidos.get(c.getPartido().getNumPartido()) == null){
+                partidos.put(c.getPartido().getNumPartido(), c.getPartido());
+                Partido p = partidos1.get(c.getPartido().getNumPartido());
+                c.printaCandidatoRelatorioSete(i, p.getCandidatoMenosVotado());
+                i++;
+            }
+            
+        }
+
     }
 
     private static void relatorioOito(Eleicao eleicao, LocalDate dataEleicao){

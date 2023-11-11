@@ -29,10 +29,41 @@ public class Candidato{
         this.candidatoEleito = candidatoEleito;
     }
     
+    //Soma a quantidade de votos lida do arquivo e soma ao total;
     public void somaVotos(int numVotos) {
         this.numVotos += numVotos;
     }
+    
+    //Override para imprimir os candidatos da maneira adequada;
+    @Override
+    public String toString(){
         
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        
+        if(this.federacao.getNumFederacao() == -1)
+        return this.nomeCandidato + " (" + this.partido.getSiglaPartido() +", " + decimalFormat.format(this.numVotos) + " votos)";
+        else
+        return "*" + this.nomeCandidato + " (" + this.partido.getSiglaPartido() +", " + decimalFormat.format(this.numVotos) + " votos)";
+    }
+    
+    //Essa função printa os candidatos no formato esperado pelo relatório sete;
+    public void printaCandidatoRelatorioSete(int idx, Candidato c){
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        
+        String votos;
+
+        if(this.numVotos > 1) votos = " votos";
+        else votos = " voto";
+
+        String votosC;
+
+        if(c.getNumVotos() > 1) votosC = " votos";
+        else votosC = " voto";
+
+        System.out.println(idx + " - " + this.partido.getSiglaPartido() + " - " + this.partido.getNumPartido() + ", " + this.nomeCandidato + " (" + this.numCandidato + ", " + decimalFormat.format(this.numVotos) + votos + ") / " + c.nomeCandidato + " (" + c.numCandidato + ", " + decimalFormat.format(c.numVotos) + votosC + ")");
+    }
+
+    //Getters;
     public TipoDeputado getCargo() {
         return cargo;
     }
@@ -48,56 +79,28 @@ public class Candidato{
     public Partido getPartido() {
         return partido;
     }
-
+    
     public Federacao getFederacao() {
         return federacao;
     }
-
+    
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
-
+    
     public Boolean getCandidatoEleito() {
         return candidatoEleito;
     }
-
+    
     public Genero getGenero() {
         return genero;
     }
-
+    
     public boolean getVotosVaoParaLegenda() {
         return votosVaoParaLegenda;
     }
-
+    
     public int getNumVotos() {
         return numVotos;
     }
-
-    public void printaCandidatoRelatorioSete(int idx, Candidato c){
-        DecimalFormat decimalFormat = new DecimalFormat("#,###");
-
-        String votos;
-
-        if(this.numVotos > 1) votos = " votos";
-        else votos = " voto";
-
-        String votosC;
-
-        if(c.getNumVotos() > 1) votosC = " votos";
-        else votosC = " voto";
-
-        System.out.println(idx + " - " + this.partido.getSiglaPartido() + " - " + this.partido.getNumPartido() + ", " + this.nomeCandidato + " (" + this.numCandidato + ", " + decimalFormat.format(this.numVotos) + votos + ") / " + c.nomeCandidato + " (" + c.numCandidato + ", " + decimalFormat.format(c.numVotos) + votosC + ")");
-    }
-
-    @Override
-    public String toString(){
-        
-        DecimalFormat decimalFormat = new DecimalFormat("#,###");
-
-        if(this.federacao.getNumFederacao() == -1)
-            return this.nomeCandidato + " (" + this.partido.getSiglaPartido() +", " + decimalFormat.format(this.numVotos) + " votos)";
-        else
-        return "*" + this.nomeCandidato + " (" + this.partido.getSiglaPartido() +", " + decimalFormat.format(this.numVotos) + " votos)";
-    }
-
 }

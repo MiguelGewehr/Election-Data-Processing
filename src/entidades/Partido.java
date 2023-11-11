@@ -17,31 +17,28 @@ public class Partido {
         this.siglaPartido = siglaPartido;
     }
     
+    //Soma os votos totais do partido;
     public void somaVotos(){
         this.numVotos = numVotosLegenda + numVotosNominal;
     }
     
-    public String getNumPartido() {
-        return numPartido;
+    
+    //Soma os votos da legenda do partido;
+    public void somaVotosLegenda(int numVotos){
+        this.numVotosLegenda += numVotos;
     }
     
-    public String getSiglaPartido() {
-        return siglaPartido;
+    //Soma os votos nominais do partido;
+    public void somaVotosNominal(int numVotos){
+        this.numVotosNominal += numVotos;
     }
     
-    public int getNumVotos() {
-        return numVotos;
+    //Incrementa o número de candidatos eleitos presente no partido;
+    public void incrementaNumCandidatosEleitos(){
+        this.numCandidatosEleitos++;
     }
     
-    
-    public Candidato getCandidatoMenosVotado() {
-        return candidatoMenosVotado;
-    }
-    
-    public void setCandidatoMenosVotado(Candidato candidatoMenosVotado) {
-        this.candidatoMenosVotado = candidatoMenosVotado;
-    }
-    
+    //Override para printar o partido no formato esperado;
     @Override
     public String toString(){
 
@@ -54,31 +51,8 @@ public class Partido {
     
         return this.siglaPartido + " - " + this.numPartido +", " + decimalFormat.format(this.numVotos) + votos;
     }
-    
-    public int getVotosLegenda() {
-        return numVotosLegenda;
-    }
-    
-    public int getVotosNominal() {
-        return numVotosNominal;
-    }
-    
-    public void somaVotosLegenda(int numVotos){
-        this.numVotosLegenda += numVotos;
-    }
-    
-    public void somaVotosNominal(int numVotos){
-        this.numVotosNominal += numVotos;
-    }
-    
-    public int getNumCandidatosEleitos() {
-        return numCandidatosEleitos;
-    }
 
-    public void incrementaNumCandidatosEleitos(){
-        this.numCandidatosEleitos++;
-    }
-
+    //Printa o partido no formato pedido pelo relatorio seis;
     public void printaPartidoRelatorioSeis(int i){
         
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
@@ -89,10 +63,44 @@ public class Partido {
         else candidatosEleitos = " candidato eleito";
 
         String nominais;
-
+        
         if(this.numVotosNominal > 1) nominais =  " nominais";
         else nominais = " nominal"; 
-
+        
         System.out.println(i + " - " + this.toString() + " (" + decimalFormat.format(this.numVotosNominal) + nominais + " e " + decimalFormat.format(this.numVotosLegenda) + " de legenda), " + this.numCandidatosEleitos + candidatosEleitos);
     }
+    
+    public void setCandidatoMenosVotado(Candidato candidatoMenosVotado) {
+        this.candidatoMenosVotado = candidatoMenosVotado;
+    }
+
+    //getters
+    public String getNumPartido() {
+        return numPartido;
+    }
+    
+    public String getSiglaPartido() {
+        return siglaPartido;
+    }
+    
+    public int getNumVotos() {
+        return numVotos;
+    }
+    
+    public Candidato getCandidatoMenosVotado() {
+        return candidatoMenosVotado;
+    }
+    
+    public int getNumCandidatosEleitos() {
+        return numCandidatosEleitos;
+    }
+    
+    public int getVotosLegenda() {
+        return numVotosLegenda;
+    }
+    
+    public int getVotosNominal() {
+        return numVotosNominal;
+    }
 }
+

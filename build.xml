@@ -4,7 +4,7 @@
 	<!-- Propriedades do build. -->
 	<property name="src" location="src" />
 	<property name="bin" location="bin" />
-	<property name="mainClass" value="Main" />
+	<property name="mainClass" value="App" />
 
 	<!-- Inicialização. -->
 	<target name="init" description="Inicializa as estruturas necessárias.">
@@ -30,8 +30,8 @@
 	<target name="run-federal" depends="compile" description="Executa o programa principal, em modo normal.">
 		<java fork="yes" classname="${mainClass}">
 			<arg value="--federal" />
-			<arg value="candidatos.csv" />
-			<arg value="votacao.csv" />
+			<arg value="Inputs/Acre/candidatos.csv" />
+			<arg value="Inputs/Acre/votacao.csv" />
 			<arg value="02/10/2022" />
 			<classpath>
 				<pathelement path="${bin}" />
@@ -43,8 +43,8 @@
 	<target name="run-estadual" depends="compile" description="Executa o programa principal, em modo normal.">
 		<java fork="yes" classname="${mainClass}">
 			<arg value="--estadual" />
-			<arg value="candidatos.csv" />
-			<arg value="votacao.csv" />
+			<arg value="Inputs/Acre/candidatos.csv" />
+			<arg value="Inputs/Acre/votacao.csv" />
 			<arg value="02/10/2022" />
 			<classpath>
 				<pathelement path="${bin}" />
