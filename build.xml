@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TrabalhoPOO_2023_2" default="compile" basedir=".">
+    
+    <description>Arquivo de build do trabalho de POO, 2023/2.</description>
+    
+    <!-- Propriedades do build -->
+    <property name="src" location="src" />
+    <property name="bin" location="bin" />
+    <property name="mainClass" value="App" />
+    
+    <!-- Inicialização -->
+    <target name="init" description="Inicializa as estruturas necessárias.">
+        <tstamp/>
+        <mkdir dir="${bin}" />
+    </target>
+    
+    <!-- Compilação -->
+    <target name="compile" depends="init" description="Compila o código-fonte.">
+        <javac target="11" source="11" includeantruntime="false" srcdir="${src}"
+               destdir="${bin}" encoding="UTF-8" />
+    </target>
+    
+    <!-- Pacote -->
+    <target name="jar" depends="compile">
+        <jar destfile="deputados.jar" basedir="${bin}">
+            <manifest>
+                <attribute name="Main-Class" value="${mainClass}"/>
+            </manifest>
+        </jar>
+    </target>
+    
+    <!-- Execução federal -->
+    <target name="run-federal" depends="compile" description="Executa o programa para deputados federais.">
+        <java fork="yes" classname="${mainClass}">
+            <arg value="--federal" />
+            <arg value="input/acre/candidatos.csv" />
+            <arg value="input/acre/votacao.csv" />
+            <arg value="02/10/2022" />
+            <classpath>
+                <pathelement path="${bin}" />
+            </classpath>
+        </java>
+    </target>
+    
+    <!-- Execução estadual -->
+    <target name="run-estadual" depends="compile" description="Executa o programa para deputados estaduais.">
+        <java fork="yes" classname="${mainClass}">
+            <arg value="--estadual" />
+            <arg value="input/acre/candidatos.csv" />
+            <arg value="input/acre/votacao.csv" />
+            <arg value="02/10/2022" />
+            <classpath>
+                <pathelement path="${bin}" />
+            </classpath>
+        </java>
+    </target>
+    
+    <!-- Limpeza -->
+    <target name="clean" description="Limpa o projeto, deixando apenas o código-fonte." >
+        <delete dir="${bin}"/>
+        <delete><fileset dir="." includes="*.csv"/></delete>
+        <delete file="deputados.jar"/>
+    </target>
+    
+</project>
